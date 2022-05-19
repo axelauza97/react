@@ -25,6 +25,8 @@ const dummyExpenses = [
 ];
 const App = () => {
   const [expenses, setExpenses] =useState(dummyExpenses);
+  const [bool, setBool]=useState(false);
+
   const newExpenseHandler = (expense) => {
     setExpenses(prevExpenses=>{
       return [expense,...prevExpenses];
@@ -32,10 +34,22 @@ const App = () => {
     )
     console.log(expense);
   };
+  const onAddHandler = () => {
+    setBool(prev=>{
+      return !prev;
+    })
+  };
+  const onCancelHandler = (boolCancel) => {
+    setBool(boolCancel);
+  };
+  let content=<div className="new-expense"><button onClick={onAddHandler}>Add New Expense</button></div>;
+  if(bool){
+    content=<NewExpense onNewExpense={newExpenseHandler} onCancel={onCancelHandler}/>;
+  }
 
   return (
     <div>
-      <NewExpense onNewExpense={newExpenseHandler} />{" "}
+      {content}
       <Expenses expenses={expenses} />
     </div>
   );
