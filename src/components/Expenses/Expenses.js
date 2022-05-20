@@ -15,12 +15,10 @@ const Expenses = (props) => {
   
 
   return (
-    <li>
       <Card className="expenses">
         <ExpensesFilter selected={filter} onFilterChange={filterHandler} />
         <ExpensesList items={filterExpenses} />
       </Card>
-    </li>
   );
 };
 
