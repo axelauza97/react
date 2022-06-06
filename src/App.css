@@ -1,14 +1,33 @@
-#goals {
-  width: 35rem;
-  max-width: 90%;
-  margin: 3rem auto;
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-size: 100%;
 }
-
-#goal-form {
-  width: 30rem;
-  max-width: 90%;
-  margin: 3rem auto;
-  padding: 2rem;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.2);
-  border-radius: 10px;
+.user-input{
+  width: 80vw;
+  height: 30vh;
+  max-height: 15rem;
+  max-width: 20rem;
+  background-color: white;
+  margin: 2rem auto;
+  border-radius: 1rem;
+}
+.user-list{
+  width: 80vw;
+  max-width: 20rem;
+  background-color: white;
+  margin: 2rem auto;
+  border-radius: 1rem;
+  overflow-y: scroll;
+  height: 100%;
+}
+main{
+  width: 100vw;
+  height: 100vh;
+  background-color: black;
+  padding-top: 1rem;
+  display: grid;
+  grid-template-rows: 30vh auto;
+  grid-gap: 1rem;
 }

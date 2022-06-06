@@ -1,56 +1,36 @@
-import React, { useState } from 'react';
-
-import CourseGoalList from './components/CourseGoals/CourseGoalList/CourseGoalList';
-import CourseInput from './components/CourseGoals/CourseInput/CourseInput';
-import './App.css';
+import logo from "./logo.svg";
+import "./App.css";
+import UserInput from "./components/UserInput";
+import UserList from "./components/UserList";
+import { useState } from "react";
+import Modal from "./UI/Modal/Modal";
 
 const App = () => {
-  const [courseGoals, setCourseGoals] = useState([
-    { text: 'Do all exercises!', id: 'g1' },
-    { text: 'Finish the course!', id: 'g2' }
-  ]);
+  const [users, setUsers] = useState([]);
+  const [show, setShow] = useState(false);
 
-  const addGoalHandler = enteredText => {
-    setCourseGoals(prevGoals => {
-      const updatedGoals = [...prevGoals];
-      updatedGoals.unshift({ text: enteredText, id: Math.random().toString() });
-      return updatedGoals;
+  const userAddHandler = (user) => {
+    if (user.age <= 0 || user.age == "") {
+      setShow(true);
+      return;
+    }
+    setUsers((prev) => {
+      return [user, ...prev];
     });
   };
-
-  const deleteItemHandler = goalId => {
-    setCourseGoals(prevGoals => {
-      const updatedGoals = prevGoals.filter(goal => goal.id !== goalId);
-      return updatedGoals;
-    });
+  const handleClose = (event) => {
+    setShow(false);
   };
-
-  let content = (
-    <p style={{ textAlign: 'center' }}>No goals found. Maybe add one?</p>
-  );
-
-  if (courseGoals.length > 0) {
-    content = (
-      <CourseGoalList items={courseGoals} onDeleteItem={deleteItemHandler} />
-    );
-  }
-
   return (
-    <div>
-      <section id="goal-form">
-        <CourseInput onAddGoal={addGoalHandler} />
-      </section>
-      <section id="goals">
-        {content}
-        {/* {courseGoals.length > 0 && (
-          <CourseGoalList
-            items={courseGoals}
-            onDeleteItem={deleteItemHandler}
-          />
-        ) // <p style={{ textAlign: 'center' }}>No goals found. Maybe add one?</p>
-        } */}
-      </section>
-    </div>
+    <main>
+      <div className="user-input">
+        <UserInput onNewUser={userAddHandler} />
+      </div>
+      <div className="user-list">
+        <UserList userList={users} />
+      </div>
+      <Modal show={show} onHide={handleClose} />
+    </main>
   );
 };
 

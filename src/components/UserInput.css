@@ -1,0 +1,26 @@
+.form{
+    display: flex;
+    flex-flow: column;
+    justify-content: space-around;
+    height: 100%;
+    padding: 0.8rem;
+}
+
+.form button{
+    padding: 0.2rem;
+    max-width: 5rem;
+    align-self: left;
+    background-color: purple;
+    border-radius: 0.2rem;
+    border-style: none;
+    color: white;
+}
+
+.form label{
+    font-weight: bold;
+}
+.form input{
+    line-height: 1.5rem;
+    padding: 0.1rem 0.5rem;
+}
+    
