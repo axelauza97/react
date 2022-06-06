@@ -8,12 +8,11 @@ import Modal from "./UI/Modal";
 const App = () => {
   const [users, setUsers] = useState([]);
   const [show, setShow] = useState(false);
+  const [title, setTitle] = useState("");
+  const [content, setContent] = useState("");
+
 
   const userAddHandler = (user) => {
-    if (user.age <= 0 || user.age == "") {
-      setShow(true);
-      return;
-    }
     setUsers((prev) => {
       return [user, ...prev];
     });
@@ -21,11 +20,16 @@ const App = () => {
   const handleClose = (event) => {
     setShow(false);
   };
+  const showModal = (titleShow, contentShow)=>{
+    setTitle(titleShow);
+    setContent(contentShow);
+    setShow(true);
+  };
   return (
     <main>
-      <UserInput className="user-input" onNewUser={userAddHandler} />
+      <UserInput className="user-input" onNewUser={userAddHandler} onShowModal={showModal} />
       <UserList className="user-list" userList={users} />
-      <Modal show={show} onHide={handleClose} />
+      <Modal show={show} onHide={handleClose} title={title} content={content}/>
     </main>
   );
 };

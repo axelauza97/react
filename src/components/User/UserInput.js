@@ -7,6 +7,10 @@ const UserInput = (props) => {
 
   const addUserHandler = (event) => {
     event.preventDefault();
+    if (age <= 0 || username == "") {
+      props.onShowModal("Error","Wrong age, must be greater than 0");
+      return;
+    }
     props.onNewUser({
       key: Math.random().toString(),
       age: age,
