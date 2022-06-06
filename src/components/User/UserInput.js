@@ -1,9 +1,9 @@
 import { useState } from "react";
+import Card from "../../UI/Card";
 import "./UserInput.css";
 const UserInput = (props) => {
   const [username, setUsername] = useState("");
   const [age, setAge] = useState("");
-  
 
   const addUserHandler = (event) => {
     event.preventDefault();
@@ -21,15 +21,17 @@ const UserInput = (props) => {
   const changeAgeHandler = (event) => {
     setAge(event.target.value);
   };
-  
+
   return (
-    <form className="form" onSubmit={addUserHandler}>
-      <label>Username</label>
-      <input type="text" value={username} onChange={changeUsernameHandler} />
-      <label>Age (years)</label>
-      <input type="number" value={age} onChange={changeAgeHandler} />
-      <button type="submit">Add User</button>      
-    </form>
+    <Card className={props.className}>
+      <form className="form" onSubmit={addUserHandler}>
+        <label>Username</label>
+        <input type="text" value={username} onChange={changeUsernameHandler} />
+        <label>Age (years)</label>
+        <input type="number" value={age} onChange={changeAgeHandler} />
+        <button type="submit">Add User</button>
+      </form>
+    </Card>
   );
 };
 export default UserInput;

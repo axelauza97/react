@@ -1,9 +1,9 @@
 import logo from "./logo.svg";
 import "./App.css";
-import UserInput from "./components/UserInput";
-import UserList from "./components/UserList";
+import UserInput from "./components/User/UserInput";
+import UserList from "./components/User/UserList";
 import { useState } from "react";
-import Modal from "./UI/Modal/Modal";
+import Modal from "./UI/Modal";
 
 const App = () => {
   const [users, setUsers] = useState([]);
@@ -23,12 +23,8 @@ const App = () => {
   };
   return (
     <main>
-      <div className="user-input">
-        <UserInput onNewUser={userAddHandler} />
-      </div>
-      <div className="user-list">
-        <UserList userList={users} />
-      </div>
+      <UserInput className="user-input" onNewUser={userAddHandler} />
+      <UserList className="user-list" userList={users} />
       <Modal show={show} onHide={handleClose} />
     </main>
   );

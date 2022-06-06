@@ -4,25 +4,15 @@
   box-sizing: border-box;
   font-size: 100%;
 }
-.user-input{
-  width: 80vw;
+.user-input {
   height: 30vh;
   max-height: 15rem;
-  max-width: 20rem;
-  background-color: white;
-  margin: 2rem auto;
-  border-radius: 1rem;
 }
-.user-list{
-  width: 80vw;
-  max-width: 20rem;
-  background-color: white;
-  margin: 2rem auto;
-  border-radius: 1rem;
+.user-list {
   overflow-y: scroll;
   height: 100%;
 }
-main{
+main {
   width: 100vw;
   height: 100vh;
   background-color: black;
