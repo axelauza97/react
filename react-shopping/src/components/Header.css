@@ -1,0 +1,11 @@
+.filters {
+  display: flex;
+  justify-content: space-around;
+  margin: 0 auto;
+  max-width: 25rem;
+  flex-wrap: wrap;
+}
+
+.navbarTitle {
+  position: relative;
+}
