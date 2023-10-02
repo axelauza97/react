@@ -1,78 +1,72 @@
 .productsList {
-  list-style: none;
-  padding: 0;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(8rem, 10rem));
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
+    list-style: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(8rem, 10rem));
+    align-items: stretch;
+    justify-content: center;
+    gap: 1rem;
 }
 
 .productItem {
-  display: grid;
-  grid-template-rows: minmax(min-content, 2rem) 6rem 3rem minmax(
-      min-content,
-      4rem
-    );
-  grid-gap: 0.5rem;
-  border: 1px solid #000;
-  border-radius: 1rem;
-  padding: 0.5rem;
-  height: fit-content;
+    display: grid;
+    grid-template-rows: 1fr 6rem 3rem 1fr;
+    grid-gap: 0.5rem;
+    border: 1px solid #000;
+    border-radius: 1rem;
+    padding: 0.5rem;
+    height: 100%;
 }
 
 .productItem h3 {
-  margin: 0;
+    margin: 0;
 }
 
 .productImage {
-  width: 6rem;
-  height: 6rem;
-  place-self: center;
-  border-radius: 1rem;
+    width: 6rem;
+    height: 6rem;
+    place-self: center;
+    border-radius: 1rem;
 }
 
 .productDescription {
-  overflow: hidden;
-  margin: 0;
+    overflow: hidden;
+    margin: 0;
 }
 
 .productItemSection {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  flex-wrap: wrap;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    flex-wrap: wrap;
 }
 
 .productItemSection p {
-  font-size: 0.9rem;
-  margin: auto;
+    font-size: 0.9rem;
+    margin: auto;
 }
 
 .productItemSection button {
-  margin: auto 0 auto auto;
+    margin: auto 0 auto auto;
 }
 
 .footerDebug {
-  position: fixed;
-  font-size: 0.8rem;
-  background-color: black;
-  bottom: 0;
-  left: 0;
+    position: fixed;
+    font-size: 0.8rem;
+    background-color: black;
+    bottom: 0;
+    left: 0;
 }
 
 @media screen and (min-width: 700px) {
-  .productsList {
-    grid-template-columns: repeat(auto-fit, minmax(10rem, 15rem));
-  }
-  .productImage {
-    width: 8rem;
-    height: 8rem;
-  }
-  .productItem {
-    grid-template-rows: minmax(min-content, 2rem) 8rem 3rem minmax(
-        min-content,
-        4rem
-      );
-  }
+    .productsList {
+        grid-template-columns: repeat(auto-fit, minmax(10rem, 15rem));
+    }
+    .productImage {
+        width: 8rem;
+        height: 8rem;
+    }
+    .productItem {
+        grid-template-rows: 1fr 8rem 3rem 1fr;
+    }
 }

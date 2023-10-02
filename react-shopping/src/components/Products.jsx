@@ -2,7 +2,7 @@ import { useCart } from "../hooks/useCart";
 import "./Products.css";
 export function Products({ products }) {
   const { cart, addCart, removeProductCart, checkProduct } = useCart();
-  console.log(cart);
+  //console.log(cart);
   return (
     <>
       <ul className="productsList">
@@ -31,7 +31,7 @@ export function Products({ products }) {
             </li>
           ))}
       </ul>
-      <footer className="footerDebug">{JSON.stringify(cart)}</footer>
+      {/*for testing state <footer className="footerDebug">{JSON.stringify(cart)}</footer>*/}
     </>
   );
 }

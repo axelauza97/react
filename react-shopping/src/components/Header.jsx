@@ -1,4 +1,4 @@
-import { useContext, useId, useState } from "react";
+import { useContext, useId } from "react";
 import "./Header.css";
 import { FiltersContext } from "../context/filters";
 import { Cart } from "./Cart";

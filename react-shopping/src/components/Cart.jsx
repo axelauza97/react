@@ -6,12 +6,16 @@ export function Cart() {
   const [show, setShow] = useState(false);
   const { cart, addCart, removeCart, getTotalPrice } = useCart();
   const onClickHandler = () => {
+    if (cart.length == 0) {
+      alert("Cart is empty");
+      return;
+    }
     setShow(!show);
   };
   const onCloseHandler = () => {
     setShow(!show);
   };
-  console.log(cart);
+  //console.log(cart);
   return (
     <>
       <button className="btnCart" onClick={onClickHandler}>
@@ -57,6 +61,7 @@ export function Cart() {
                   </p>
                 </li>
               ))}
+            {cart.length == 0 && <p>Cart is empty</p>}
           </ul>
           <footer>
             <h3>Total: ${getTotalPrice()}</h3>
