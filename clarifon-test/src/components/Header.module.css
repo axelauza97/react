@@ -1,0 +1,42 @@
+.header {
+    background-color: #252f3d;
+}
+
+.headerSlide {
+    width: 100%;
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem 1rem;
+    background-color: #252f3d;
+}
+
+.headerInfo {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.headerSlideItem {
+    margin: 0;
+    font-size: 0.75rem;
+}
+
+.desktop {
+    display: none;
+}
+
+@media screen and (min-width: 700px) {
+    .desktop {
+        display: flex;
+    }
+    .mobile {
+        display: none;
+    }
+    .headerSlide {
+        padding: 1rem;
+        max-width: 70rem;
+        min-width: 700px;
+        margin: 0 auto;
+        gap: 1rem;
+    }
+}
