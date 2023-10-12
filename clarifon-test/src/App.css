@@ -447,4 +447,8 @@ main {
         grid-row: 1/2;
         margin-left: auto;
     }
+    .satisfactionAside {
+        grid-template-columns: auto 3fr;
+        gap: 1rem;
+    }
 }
