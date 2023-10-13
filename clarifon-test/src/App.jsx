@@ -37,19 +37,27 @@ function App() {
         <section className="progressSection">
           <aside className="progressAside">
             <img className="checkImg" src={checkLogo} alt="" />
-            <p className="checkDescription">Cart Review</p>
+            <p className="checkDescription">
+              <span className="checkStep">Step 1: </span> Cart Review
+            </p>
           </aside>
           <aside className="progressAside">
             <img className="checkImg" src={checkLogo} alt="" />
-            <p className="checkDescription">Checkout</p>
+            <p className="checkDescription">
+              <span className="checkStep">Step 2: </span> Checkout
+            </p>
           </aside>
           <aside className="progressAside">
             <img className="checkImg" src={checkLogo} alt="" />
-            <p className="checkDescription">Special Offer</p>
+            <p className="checkDescription">
+              <span className="checkStep">Step 3: </span> Special Offer
+            </p>
           </aside>
           <aside className="progressAside">
             <img className="checkImg" src={checkLogo} alt="" />
-            <p className="checkDescription">Confirmation</p>
+            <p className="checkDescription">
+              <span className="checkStep">Step 4: </span> Confirmation
+            </p>
           </aside>
         </section>
         <section className="productDesktop">
@@ -72,7 +80,7 @@ function App() {
             <img src={clarifonImg} alt="Product" className="productCardImage" />
             <h3 className="productCardTitle">Clarifion Air Ionizer</h3>
             <p className="productCardPrice">
-              <span className="productCardPrice">$180</span>
+              <span className="productCardPriceInitial">$180</span>
               <span className="productCardPriceFinal">$84</span>
             </p>
             <p className="productCardStars">
@@ -85,6 +93,10 @@ function App() {
             <p className="productCardStock">
               <input type="radio" />
               12 left in stock
+            </p>
+            <p className="productCardDescription">
+              Simply plug a Clarifion into any standard outlet and replace
+              bulky, expensive air purifiers with a simple.
             </p>
           </section>
           <section className="productDescriptionSection">
