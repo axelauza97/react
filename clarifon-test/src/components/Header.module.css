@@ -24,6 +24,7 @@
   margin: 0;
   font-size: 0.75rem;
   width: 100%;
+  align-self: center;
 }
 
 .desktop {
