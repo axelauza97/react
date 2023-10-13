@@ -2,7 +2,7 @@ import "./App.css";
 import clarifonLogo from "./assets/clarifon.svg";
 import mcafeeLogo from "./assets/mcafee.svg";
 import nortonLogo from "./assets/norton.svg";
-import checkLogo from "./assets/check.svg";
+
 import checkBlue from "./assets/checkBlue.svg";
 import starLogo from "./assets/star.svg";
 import visaLogo from "./assets/visaCard.svg";
@@ -14,6 +14,8 @@ import avatarLogo from "./assets/avatar.svg";
 import productImg from "./assets/image4.png";
 import { Header } from "./components/Header";
 import clarifonImg from "./assets/clarifonCard.png";
+import { ProgressSection } from "./components/ProgressSection";
+import { Footer } from "./components/Footer";
 
 function App() {
   return (
@@ -34,32 +36,8 @@ function App() {
             Lorem Ipsum Dolor Sit Amet. Consectetur
           </p>
         </section>
-        <section className="progressSection">
-          <aside className="progressAside">
-            <img className="checkImg" src={checkLogo} alt="" />
-            <p className="checkDescription">
-              <span className="checkStep">Step 1: </span> Cart Review
-            </p>
-          </aside>
-          <aside className="progressAside">
-            <img className="checkImg" src={checkLogo} alt="" />
-            <p className="checkDescription">
-              <span className="checkStep">Step 2: </span> Checkout
-            </p>
-          </aside>
-          <aside className="progressAside">
-            <img className="checkImg" src={checkLogo} alt="" />
-            <p className="checkDescription">
-              <span className="checkStep">Step 3: </span> Special Offer
-            </p>
-          </aside>
-          <aside className="progressAside">
-            <img className="checkImg" src={checkLogo} alt="" />
-            <p className="checkDescription">
-              <span className="checkStep">Step 4: </span> Confirmation
-            </p>
-          </aside>
-        </section>
+        <ProgressSection />
+
         <section className="productDesktop">
           <section className="productSection">
             <h2 className="productPromotion">
@@ -91,8 +69,8 @@ function App() {
               <img src={starLogo} alt="" className="productCardStarsImg" />
             </p>
             <p className="productCardStock">
-              <input type="radio" />
-              12 left in stock
+              <input type="radio" id="stockRadio" />
+              <label htmlFor="stockRadio">12 left in stock</label>
             </p>
             <p className="productCardDescription">
               Simply plug a Clarifion into any standard outlet and replace
@@ -161,7 +139,7 @@ function App() {
             </aside>
             <p className="paymentDont">NO THANKS, I DONT WANT THIS</p>
             <aside className="satisfactionAside">
-              <img src={satisfactionLogo} />
+              <img src={satisfactionLogo} alt="" />
               <p>
                 If you are not completely thrilled with your Clarifion - We have
                 a 30 day satisfaction guarantee. Please refer to our return
@@ -195,16 +173,7 @@ function App() {
           </section>
         </section>
 
-        <footer className="footer">
-          <section className="footerSection">
-            <p className="footerSectionCopy">Copyright (c) 2023</p>
-            <p className="footerSectionEmail">Clarifionsupport@clarifion.com</p>
-            <p className="footerSectionSecure">
-              <img src={lockLogo} alt="" className="paymentSecureLogo" />
-              Secure 256-bit SSL encryption.
-            </p>
-          </section>
-        </footer>
+        <Footer />
       </main>
     </>
   );

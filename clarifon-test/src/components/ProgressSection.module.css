@@ -1,0 +1,45 @@
+.progressSection {
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+    padding: 0 1rem;
+    flex-wrap: wrap;
+    font-size: 0.75rem;
+}
+
+.progressAside:hover {
+    cursor: pointer;
+}
+
+.checkImg {
+    padding: 0.5rem;
+    background-color: #85bf55;
+    border-radius: 100%;
+}
+
+.checkDescription {
+    margin: 0;
+    color: #000;
+}
+
+.checkStep {
+    display: none;
+}
+
+@media screen and (min-width: 700px) {
+    .checkStep {
+        display: inline-block;
+    }
+    .progressSection {
+        padding: 1rem;
+        max-width: 70rem;
+        min-width: 700px;
+        margin: 0 auto;
+        font-size: 1rem;
+    }
+    .progressAside {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        gap: 1rem;
+    }
+}

@@ -1,0 +1,48 @@
+.footer {
+    background-color: #252f3d;
+}
+
+.footerSection {
+    padding: 0.5rem;
+    background-color: #252f3d;
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    grid-template-rows: auto auto;
+    font-size: 0.75rem;
+    justify-items: center;
+    align-items: center;
+}
+
+.footerSectionSecure {
+    grid-column: 1/3;
+    fill: #2c7ef8 !important;
+}
+
+.footerSectionEmail {
+    border-left: 1px solid #edf3fd;
+    width: 100%;
+    text-align: center;
+}
+
+.paymentSecureLogo {
+    padding-right: 0.5rem;
+}
+
+@media screen and (min-width: 700px) {
+    .footerSection {
+        grid-template-columns: auto auto 1fr;
+        grid-template-rows: auto;
+        max-width: 70rem;
+        margin: 0 auto;
+        padding: 0 1rem;
+        gap: 1rem;
+    }
+    .footerSectionSecure {
+        grid-column: 3/4;
+        grid-row: 1/2;
+        margin-left: auto;
+    }
+    .footerSectionEmail {
+        padding-left: 1rem;
+    }
+}
