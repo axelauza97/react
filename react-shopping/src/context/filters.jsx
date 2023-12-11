@@ -1,4 +1,9 @@
 import { createContext, useState } from "react";
+import PropTypes from "prop-types";
+
+FiltersProvider.propTypes = {
+  children: PropTypes.node,
+};
 
 export const FiltersContext = createContext();
 export function FiltersProvider({ children }) {

@@ -2,6 +2,11 @@ import { useContext, useId } from "react";
 import "./Header.css";
 import { FiltersContext } from "../context/filters";
 import { Cart } from "./Cart";
+import PropTypes from "prop-types";
+
+Header.propTypes = {
+  categories: PropTypes.array,
+};
 export function Header({ categories }) {
   const priceId = useId();
   const categoryId = useId();
