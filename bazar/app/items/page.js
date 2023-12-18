@@ -1,43 +1,62 @@
 "use client";
-import { Car } from "@/images/car";
-import { Smartphone } from "@/images/smartphone";
 import Link from "next/link";
-import responseMock from "@/mocks/products.json";
-import { usePathname, useRouter } from "next/navigation";
+import { useSearchParams } from "next/navigation";
+import { useCallback, useContext, useEffect } from "react";
+import { Categories } from "@/components/Categories";
+import { ProductsContext } from "@/context/products";
+import { FiltersContext } from "@/context/filters";
 export default function Page() {
-  const router = useRouter();
-  //const pathName = usePathname();
+  const { products, setProducts } = useContext(ProductsContext);
+  const { filters, setfilters } = useContext(FiltersContext);
 
-  const { products } = responseMock;
-  console.log(router);
-  //console.log(pathName);
-  //console.log(products);
+  const searchParams = useSearchParams();
+
+  const search = searchParams.get("search");
+  useEffect(() => {
+    fetch(`/api/items?search=${search}`)
+      .then((res) => res.json())
+      .then((res) => setProducts(res.products));
+  }, []);
+  const categories = useCallback(() => {
+    let listCategories = new Set();
+    products.forEach((item) => {
+      listCategories.add(item.category);
+    });
+    return [...listCategories];
+  }, [products, setProducts]);
+
+  const filterProducts = () => {
+    return products.filter((product) => {
+      if (filters.category === "all") {
+        return true;
+      } else {
+        return filters.category === product.category;
+      }
+    });
+  };
   return (
     <>
       <main>
-        <h2 className="font-bold text-center">
-          Resultados de búsqueda de "smart":12
-        </h2>
-        <section className="flex flex-wrap justify-around max-w-xl mx-auto mt-2">
-          <a className="flex gap-3 p-2 bg-red-400 rounded cursor-pointer">
-            <Smartphone className="w-8 h-8" />
-            <p>smartphones</p>
-          </a>
-          <a className="flex gap-3 p-2 bg-red-400 rounded cursor-pointer">
-            <Smartphone className="w-8 h-8" />
-            <p>smartphones</p>
-          </a>
-        </section>
+        {products.length > 0 && (
+          <h2 className="font-bold text-center">
+            Resultados de búsqueda de "{search}":{filterProducts().length}
+          </h2>
+        )}
+        {products.length === 0 && (
+          <h2 className="font-bold text-center">
+            No hay resultados para su búsqueda
+          </h2>
+        )}
+        <Categories categories={categories()} />
         <section>
           <ul className="grid max-w-xl gap-4 m-4 mx-auto">
-            {products.map((product) => (
+            {filterProducts().map((product) => (
               <Link
                 href={{
                   pathname: `/items/${product.id}`,
-                  //query: product,
                 }}
                 key={product.id}
-                className="active:scale-95 rounded-lg mx-4 grid border border-neutral-500 grid-cols-2 gap-2 grid-rows-[min-content,min-content,min-content] p-2 auto-rows-min cursor-pointer"
+                className="bg-slate-100 shadow-md active:scale-95 rounded-lg mx-4 grid border border-neutral-500 grid-cols-2 gap-2 grid-rows-[min-content,min-content,min-content] p-2 auto-rows-min cursor-pointer"
               >
                 <img
                   src={product.thumbnail}

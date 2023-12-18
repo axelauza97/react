@@ -1,27 +1,31 @@
 "use client";
 import { useSearchParams } from "next/navigation";
 import responseMock from "@/mocks/product.json";
+import { useEffect, useState } from "react";
 
 export default function Page({ params }) {
   /*const searchParams = useSearchParams();
   const title = searchParams.get("title");
   const images = searchParams.get("images");
   const thumbnail = searchParams.get("thumbnail");*/
-  const title = responseMock.title;
-  const images = responseMock.images;
-  const thumbnail = responseMock.thumbnail;
-  const description = responseMock.description;
+  const [product, setProduct] = useState({});
   //console.log(params.id);
+  //console.log(product);
+  useEffect(() => {
+    fetch(`/api/item/${params.id}`)
+      .then((res) => res.json())
+      .then((res) => setProduct(res));
+  }, []);
   return (
     <>
-      <section className="max-w-xs mx-auto">
-        <section className="grid gap-2 grid-cols-3 grid-rows-3 justify-items-center items-center ">
+      <section className="grid max-w-xs max-h-screen mx-auto grid-rows-[1fr,min-content,min-content,0.5fr]">
+        <section className="grid items-center grid-cols-3 grid-rows-3 gap-2 justify-items-center ">
           <img
-            className="col-span-2 rounded-full w-40 h-40 object-cover row-span-3"
-            src={thumbnail}
+            className="object-cover w-40 h-40 col-span-2 row-span-3 rounded-full"
+            src={product.thumbnail}
           />
-          {images &&
-            images.map((image, index) => (
+          {product.images &&
+            product.images.map((image, index) => (
               <img
                 key={crypto.randomUUID()}
                 className={`w-24 h-24 rounded-full object-cover ${
@@ -31,9 +35,9 @@ export default function Page({ params }) {
               />
             ))}
         </section>
-        <h2 className="text-center font-bold mt-2 text-xl">{title}</h2>
-        <p className="text-sm mt-2">{description}</p>
-        <button className="active:scale-95 cursor-pointer absolute bottom-2 left-0 right-0 p-2 px-8 font-semibold rounded w-fit mx-auto block bg-red-400 ">
+        <h2 className="mt-2 text-xl font-bold text-center">{product.title}</h2>
+        <p className="mt-2 text-sm">{product.description}</p>
+        <button className="self-end p-2 px-8 mx-auto font-semibold bg-red-400 rounded cursor-pointer active:bg-red-500 active:scale-95 h-fit bottom-2 w-fit">
           Comprar
         </button>
       </section>
