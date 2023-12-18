@@ -4,8 +4,8 @@ import { useRouter } from "next/navigation";
 import { useContext, useState } from "react";
 
 export const SearchBar = () => {
-  const { products, setProducts } = useContext(ProductsContext);
-  const [error, setError] = useState();
+  const { setProducts } = useContext(ProductsContext);
+  const [setError] = useState();
   const router = useRouter();
   const handleSubmit = (event) => {
     event.preventDefault();

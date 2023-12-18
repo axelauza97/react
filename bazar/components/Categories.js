@@ -1,9 +1,9 @@
 "use client";
 import { Smartphone } from "@/images/smartphone";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import clsx from "clsx";
 import { FiltersContext } from "@/context/filters";
-import { ProductsContext } from "@/context/products";
+import PropTypes from "prop-types";
 
 export const Categories = ({ categories }) => {
   const { filters, setFilters } = useContext(FiltersContext);
@@ -35,4 +35,7 @@ export const Categories = ({ categories }) => {
         ))}
     </section>
   );
+};
+Categories.propTypes = {
+  categories: PropTypes.arrayOf(PropTypes.string),
 };

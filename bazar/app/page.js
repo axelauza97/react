@@ -1,8 +1,7 @@
 "use client";
 import { Car } from "@/images/car";
-import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useCallback, useEffect, useState } from "react";
+import { useState } from "react";
 
 export default function Home() {
   const router = useRouter();
@@ -19,8 +18,8 @@ export default function Home() {
   };
 
   return (
-    <main className="grid h-screen gap-4 place-content-center ">
-      <Car />
+    <main className="grid justify-center h-screen gap-4 place-content-center ">
+      <Car className={"mx-auto w-40 h-4w-40"} />
       <h1 className="text-4xl font-bold">Bazar Online</h1>
       <form
         className="flex flex-col items-center gap-3"

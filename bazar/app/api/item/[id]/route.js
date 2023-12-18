@@ -9,7 +9,7 @@ export async function GET(req, context) {
   try {
     const id = context.params.id;
     console.log(id);
-    const result = await new Promise((resolve, reject) => {
+    const result = await new Promise((resolve) => {
       let filterList = responseMock.products.filter(
         (product) => product.id == id
       );

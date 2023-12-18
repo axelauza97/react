@@ -7,7 +7,7 @@ import { ProductsContext } from "@/context/products";
 import { FiltersContext } from "@/context/filters";
 export default function Page() {
   const { products, setProducts } = useContext(ProductsContext);
-  const { filters, setfilters } = useContext(FiltersContext);
+  const { filters } = useContext(FiltersContext);
 
   const searchParams = useSearchParams();
 
@@ -16,14 +16,14 @@ export default function Page() {
     fetch(`/api/items?search=${search}`)
       .then((res) => res.json())
       .then((res) => setProducts(res.products));
-  }, []);
+  }, [search, setProducts]);
   const categories = useCallback(() => {
     let listCategories = new Set();
     products.forEach((item) => {
       listCategories.add(item.category);
     });
     return [...listCategories];
-  }, [products, setProducts]);
+  }, [products]);
 
   const filterProducts = () => {
     return products.filter((product) => {
@@ -39,7 +39,8 @@ export default function Page() {
       <main>
         {products.length > 0 && (
           <h2 className="font-bold text-center">
-            Resultados de búsqueda de "{search}":{filterProducts().length}
+            Resultados de búsqueda de `&quot;`{search}`&quot;`:
+            {filterProducts().length}
           </h2>
         )}
         {products.length === 0 && (

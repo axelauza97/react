@@ -2,12 +2,15 @@
 import { SearchBar } from "@/components/SearchBar";
 import { FiltersProvider } from "@/context/filters";
 import { ProductsProvider } from "@/context/products";
-import { Car } from "@/images/car";
-import { useRouter } from "next/navigation";
+import PropTypes from "prop-types";
 
-export default function Layout({ children, params }) {
+Layout.propTypes = {
+  children: PropTypes.node.isRequired,
+  params: PropTypes.object,
+};
+
+export default function Layout({ children }) {
   //console.log(params);
-  const router = useRouter();
 
   return (
     <section className="">

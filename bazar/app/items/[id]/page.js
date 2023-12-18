@@ -1,13 +1,16 @@
 "use client";
-import { useSearchParams } from "next/navigation";
-import responseMock from "@/mocks/product.json";
 import { useEffect, useState } from "react";
+import PropTypes from "prop-types";
+
+Page.propTypes = {
+  params: PropTypes.object,
+};
 
 export default function Page({ params }) {
   /*const searchParams = useSearchParams();
-  const title = searchParams.get("title");
-  const images = searchParams.get("images");
-  const thumbnail = searchParams.get("thumbnail");*/
+  const title = searchParams.get('title');
+  const images = searchParams.get('images');
+  const thumbnail = searchParams.get('thumbnail');*/
   const [product, setProduct] = useState({});
   //console.log(params.id);
   //console.log(product);
@@ -15,7 +18,7 @@ export default function Page({ params }) {
     fetch(`/api/item/${params.id}`)
       .then((res) => res.json())
       .then((res) => setProduct(res));
-  }, []);
+  }, [params]);
   return (
     <>
       <section className="grid max-w-xs max-h-screen mx-auto grid-rows-[1fr,min-content,min-content,0.5fr]">
