@@ -1,13 +1,35 @@
 import { ProductsContext } from "@/context/products";
 import { Car } from "@/images/car";
-import { useRouter } from "next/navigation";
-import { useContext, useState } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
+import { useCallback, useContext, useEffect, useState } from "react";
+import debounce from "just-debounce-it";
 
 export const SearchBar = () => {
   const { setProducts } = useContext(ProductsContext);
+  const searchParams = useSearchParams();
+
+  const search = searchParams.get("search");
   const [setError] = useState();
+  const [searchValue, setSearchValue] = useState("");
   const router = useRouter();
+
+  useEffect(() => {
+    setSearchValue(search);
+  }, [search]);
+
+  const fetchProducts = useCallback(
+    debounce((value) => {
+      fetch(`/api/items?search=${value}`)
+        .then((res) => res.json())
+        .then((res) => setProducts(res.products));
+      router.push(`/items?search=${value}`);
+      console.log("search");
+    }, 1000),
+    []
+  );
+
   const handleSubmit = (event) => {
+    console.log(event);
     event.preventDefault();
     const fields = Object.fromEntries(new FormData(event.target));
     if (fields.search.trim() != "") {
@@ -18,6 +40,11 @@ export const SearchBar = () => {
     } else {
       setError("Enter value");
     }
+  };
+
+  const handleChange = (event) => {
+    setSearchValue(event.target.value);
+    fetchProducts(event.target.value);
   };
   return (
     <header className="sticky top-0 left-0 right-0 backdrop-blur">
@@ -31,6 +58,8 @@ export const SearchBar = () => {
           type="text"
           placeholder="laptops, smartphones..."
           name="search"
+          value={searchValue}
+          onChange={(e) => handleChange(e)}
         />
       </form>
     </header>

@@ -39,8 +39,8 @@ export default function Page() {
       <main>
         {products.length > 0 && (
           <h2 className="font-bold text-center">
-            Resultados de búsqueda de `&quot;`{search}`&quot;`:
-            {filterProducts().length}
+            Resultados de búsqueda de &quot;{search}&quot; :
+            {" " + filterProducts().length}
           </h2>
         )}
         {products.length === 0 && (

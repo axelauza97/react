@@ -18,8 +18,8 @@ export default function Home() {
   };
 
   return (
-    <main className="grid justify-center h-screen gap-4 place-content-center ">
-      <Car className={"mx-auto w-40 h-4w-40"} />
+    <main className="grid h-screen gap-4 justify-items-center place-content-center ">
+      <Car className={"w-40 h-4w-40"} />
       <h1 className="text-4xl font-bold">Bazar Online</h1>
       <form
         className="flex flex-col items-center gap-3"
