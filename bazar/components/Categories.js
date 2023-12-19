@@ -16,20 +16,20 @@ export const Categories = ({ categories }) => {
     }
   };
   return (
-    <section className="flex flex-wrap justify-around max-w-xl gap-2 mx-auto mt-2">
+    <section className="flex flex-wrap justify-around max-w-xl gap-2 m-4">
       {categories &&
         categories.map((category) => (
           <a
             key={category}
             className={clsx(
-              "active:scale-95 flex gap-3 p-2 bg-red-400 rounded cursor-pointer",
+              "active:scale-95 items-center text-xs flex gap-3 p-1 bg-red-400 rounded cursor-pointer shadow-md",
               {
                 "bg-red-500": filters.category === category,
               }
             )}
             onClick={() => handleClickCategory(category)}
           >
-            <Smartphone className="w-8 h-8" />
+            <Smartphone className="w-5 h-5" />
             <p>{category}</p>
           </a>
         ))}

@@ -9,7 +9,7 @@ export const SearchBar = () => {
   const searchParams = useSearchParams();
 
   const search = searchParams.get("search");
-  const [setError] = useState();
+  const [setError] = useState("");
   const [searchValue, setSearchValue] = useState("");
   const router = useRouter();
 
@@ -52,9 +52,9 @@ export const SearchBar = () => {
         onSubmit={handleSubmit}
         className="flex flex-wrap max-w-xs gap-4 py-2 m-4 mx-auto"
       >
-        <Car className="w-10" onClick={() => router.back()} />
+        <Car className="w-10 drop-shadow" onClick={() => router.back()} />
         <input
-          className="flex-1 px-2 py-2 rounded"
+          className="flex-1 px-2 py-2 rounded shadow-lg"
           type="text"
           placeholder="laptops, smartphones..."
           name="search"

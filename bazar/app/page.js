@@ -18,21 +18,21 @@ export default function Home() {
   };
 
   return (
-    <main className="grid h-screen gap-4 justify-items-center place-content-center ">
-      <Car className={"w-40 h-4w-40"} />
+    <main className="grid h-screen gap-4 overflow-hidden overscroll-none justify-items-center place-content-center ">
+      <Car className={"w-40 h-4w-40 drop-shadow"} />
       <h1 className="text-4xl font-bold">Bazar Online</h1>
       <form
         className="flex flex-col items-center gap-3"
         onSubmit={handleSubmit}
       >
         <input
-          className="px-2 py-2 rounded"
+          className="px-2 py-2 rounded shadow-md"
           type="text"
           name="search"
           placeholder="laptops, smartphoes..."
         />
         {error != "" && <p className="text-red-700 ">{error}</p>}
-        <button className="self-end p-2 px-8 mx-auto font-semibold bg-red-400 rounded cursor-pointer active:bg-red-500 active:scale-95 h-fit bottom-2 w-fit">
+        <button className="self-end p-2 px-8 mx-auto font-semibold bg-red-400 rounded shadow-md cursor-pointer active:bg-red-500 active:scale-95 h-fit bottom-2 w-fit">
           Buscar
         </button>
         {/*<Link href="/items"> dd</Link>*/}

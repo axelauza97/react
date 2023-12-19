@@ -13,7 +13,7 @@ export default function Layout({ children }) {
   //console.log(params);
 
   return (
-    <section className="">
+    <section className="flex flex-col min-h-screen">
       <FiltersProvider>
         <ProductsProvider>
           <SearchBar />
