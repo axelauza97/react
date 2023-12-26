@@ -16,7 +16,7 @@ export const Categories = ({ categories }) => {
     }
   };
   return (
-    <section className="flex flex-wrap justify-around max-w-xl gap-2 m-4">
+    <section className="flex flex-wrap justify-around max-w-xl gap-2 m-4 mx-auto">
       {categories &&
         categories.map((category) => (
           <a

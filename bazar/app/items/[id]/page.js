@@ -1,24 +1,49 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import clsx from "clsx";
+import Image from "next/image";
 
 Page.propTypes = {
   params: PropTypes.object,
 };
 
 export default function Page({ params }) {
-  /*const searchParams = useSearchParams();
-  const title = searchParams.get('title');
-  const images = searchParams.get('images');
-  const thumbnail = searchParams.get('thumbnail');*/
   const [product, setProduct] = useState({});
+  const [imageLoading, setImageLoading] = useState({
+    thumbnail: true,
+    images: [true, true, true],
+  });
+
   const [showImage, setShowImage] = useState({
     show: false,
     img: "",
   });
+
+  const handleThumbnailLoaded = useCallback(() => {
+    console.log("mirame");
+    setImageLoading((prevState) => ({
+      ...prevState,
+      thumbnail: false,
+    }));
+  }, [setImageLoading]);
+  const handleImageLoaded = useCallback(
+    (index) => {
+      if (imageLoading.images[index] === true) {
+        setImageLoading((prevState) => {
+          const updatedImages = [...prevState.images];
+          updatedImages[index] = false;
+          return {
+            ...prevState,
+            images: updatedImages,
+          };
+        });
+      }
+    },
+    [imageLoading]
+  );
+
   //console.log(params.id);
-  //console.log(product);
   useEffect(() => {
     fetch(`/api/item/${params.id}`)
       .then((res) => res.json())
@@ -30,29 +55,69 @@ export default function Page({ params }) {
       img: image,
     });
   };
+  //console.log(imageLoading);
   return (
     <>
-      <section className="flex-1 grid max-w-xs max-h-screen mx-auto grid-rows-[1fr,min-content,min-content,0.25fr]">
+      <section className="flex-1 grid max-w-xs sm:max-w-4xl max-h-screen mx-auto grid-rows-[1fr,min-content,min-content,0.25fr]">
         <section className="grid items-center grid-cols-3 grid-rows-3 gap-2 justify-items-center ">
-          <img
-            className="object-cover w-40 h-40 col-span-2 row-span-3 rounded-xl active:scale-95"
-            src={product.thumbnail}
-            onClick={() => imageHandler(product.thumbnail)}
-          />
+          {!product.thumbnail && (
+            <section className="col-span-2 row-span-3 w-52 h-52 rounded-xl bg-slate-700 animate-pulse"></section>
+          )}
+          {!product.images &&
+            Array(3)
+              .fill(2)
+              .map(() => (
+                <section
+                  key={crypto.randomUUID()}
+                  className="w-24 h-24 rounded-3xl bg-slate-700 animate-pulse"
+                ></section>
+              ))}
+          {product.thumbnail && (
+            <Image
+              alt="Image product"
+              height={500}
+              width={500}
+              className={`${
+                imageLoading.thumbnail ? "invisible" : ""
+              } object-cover col-span-2 row-span-3 w-52 h-52 rounded-xl active:scale-95 sm:h-72 sm:w-72`}
+              src={product.thumbnail}
+              onClick={() => imageHandler(product.thumbnail)}
+              onLoad={handleThumbnailLoaded}
+            />
+          )}
+
           {product.images &&
-            product.images.map((image, index) => (
-              <img
-                key={crypto.randomUUID()}
-                className={`w-24 h-24 rounded-3xl object-cover active:scale-95 ${
-                  index >= 3 ? "hidden" : ""
-                } `}
-                src={image}
-                onClick={() => imageHandler(image)}
-              />
+            product.images.slice(0, 3).map((image, index) => (
+              <>
+                <Image
+                  alt="Image product"
+                  height={500}
+                  width={500}
+                  key={crypto.randomUUID()}
+                  className={`${imageLoading.images[index] ? "invisible" : ""}
+                  object-cover w-24 h-24 rounded-3xl active:scale-95`}
+                  src={image}
+                  onClick={() => imageHandler(image)}
+                  onLoad={() => handleImageLoaded(index)}
+                />
+              </>
             ))}
         </section>
-        <h2 className="mt-2 text-xl font-bold text-center">{product.title}</h2>
-        <p className="mt-2 text-sm">{product.description}</p>
+        {!product.title && (
+          <section className="h-5 mt-2 text-xl font-bold text-center rounded bg-slate-700 animate-pulse"></section>
+        )}
+        {!product.description && (
+          <section className="h-10 mt-2 text-xl font-bold text-center rounded bg-slate-700 animate-pulse"></section>
+        )}
+        {product.title && (
+          <h2 className="mt-2 text-xl font-bold text-center">
+            {product.title}
+          </h2>
+        )}
+        {product.description && (
+          <p className="mt-2 text-sm">{product.description}</p>
+        )}
+
         <button className="self-center p-2 px-8 mx-auto font-semibold bg-red-400 rounded shadow-md cursor-pointer active:bg-red-500 active:scale-95 h-fit bottom-2 w-fit">
           Comprar
         </button>
@@ -76,7 +141,13 @@ export default function Page({ params }) {
           >
             x
           </button>
-          <img src={showImage.img} className="object-cover rounded w-60 h-60" />
+          <Image
+            alt="Image product"
+            height={500}
+            width={500}
+            src={showImage.img}
+            className="object-cover rounded w-60 h-60 sm:h-72 sm:w-72"
+          />
         </section>
       </aside>
     </>

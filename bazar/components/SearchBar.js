@@ -9,7 +9,7 @@ export const SearchBar = () => {
   const searchParams = useSearchParams();
 
   const search = searchParams.get("search");
-  const [setError] = useState("");
+  //const [error, setError] = useState("");
   const [searchValue, setSearchValue] = useState("");
   const router = useRouter();
 
@@ -23,13 +23,11 @@ export const SearchBar = () => {
         .then((res) => res.json())
         .then((res) => setProducts(res.products));
       router.push(`/items?search=${value}`);
-      console.log("search");
     }, 1000),
     []
   );
 
   const handleSubmit = (event) => {
-    console.log(event);
     event.preventDefault();
     const fields = Object.fromEntries(new FormData(event.target));
     if (fields.search.trim() != "") {
@@ -38,7 +36,7 @@ export const SearchBar = () => {
         .then((res) => setProducts(res.products));
       router.push(`/items?search=${fields.search}`);
     } else {
-      setError("Enter value");
+      //setError("Enter value");
     }
   };
 
@@ -56,9 +54,9 @@ export const SearchBar = () => {
         <input
           className="flex-1 px-2 py-2 rounded shadow-lg"
           type="text"
-          placeholder="laptops, smartphones..."
+          placeholder="Laptops, smartphones..."
           name="search"
-          value={searchValue}
+          value={searchValue == null ? "" : searchValue}
           onChange={(e) => handleChange(e)}
         />
       </form>

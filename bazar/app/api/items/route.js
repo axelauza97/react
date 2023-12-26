@@ -5,8 +5,11 @@ export async function GET(req) {
   try {
     const search = req.nextUrl.searchParams.get("search"); // Accessing the 'search' query parameter
     const result = await new Promise((resolve) => {
-      let filterList = responseMock.products.filter((product) =>
-        product.title.toUpperCase().includes(search.toUpperCase())
+      let filterList = responseMock.products.filter(
+        (product) =>
+          product.title.toUpperCase().includes(search.toUpperCase()) ||
+          product.category.toUpperCase().includes(search.toUpperCase()) ||
+          product.brand.toUpperCase().includes(search.toUpperCase())
       );
       //console.log(filterList);
       resolve({ ...responseMock, products: filterList });
