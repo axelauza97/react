@@ -48,9 +48,12 @@ export const SearchBar = () => {
     <header className="sticky top-0 left-0 right-0 backdrop-blur">
       <form
         onSubmit={handleSubmit}
-        className="flex flex-wrap max-w-xs gap-4 py-2 m-4 mx-auto"
+        className="flex flex-wrap max-w-xs gap-4 py-2 m-4 mx-auto sm:max-w-md"
       >
-        <Car className="w-10 drop-shadow" onClick={() => router.back()} />
+        <Car
+          className="w-10 drop-shadow hover:cursor-pointer active:scale-95"
+          onClick={() => router.back()}
+        />
         <input
           className="flex-1 px-2 py-2 rounded shadow-lg"
           type="text"
@@ -59,6 +62,9 @@ export const SearchBar = () => {
           value={searchValue == null ? "" : searchValue}
           onChange={(e) => handleChange(e)}
         />
+        <button className="hidden p-2 px-8 mx-auto font-semibold bg-red-400 rounded shadow-md cursor-pointer sm:block active:bg-red-500 active:scale-95 h-fit bottom-2 w-fit">
+          Buscar
+        </button>
       </form>
     </header>
   );

@@ -4,6 +4,11 @@ import { useContext } from "react";
 import clsx from "clsx";
 import { FiltersContext } from "@/context/filters";
 import PropTypes from "prop-types";
+import { Laptop } from "@/images/laptop";
+import { Frangance } from "@/images/fragance";
+import { Skincare } from "@/images/skincare";
+import { Groceries } from "@/images/groceries";
+import { Homedeco } from "@/images/homeDe";
 
 export const Categories = ({ categories }) => {
   const { filters, setFilters } = useContext(FiltersContext);
@@ -22,15 +27,88 @@ export const Categories = ({ categories }) => {
           <a
             key={category}
             className={clsx(
-              "active:scale-95 items-center text-xs flex gap-3 p-1 bg-red-400 rounded cursor-pointer shadow-md",
+              "active:scale-95 items-center text-xs sm:text-base flex gap-3 p-1 sm:p-2 rounded cursor-pointer shadow-md",
               {
-                "bg-red-500": filters.category === category,
+                "bg-red-400": category === "smartphones",
+              },
+              {
+                "bg-red-500":
+                  filters.category === "smartphones" &&
+                  category === "smartphones",
+              },
+              {
+                "bg-blue-400": category === "laptops",
+              },
+              {
+                "bg-blue-500":
+                  filters.category === "laptops" && category === "laptops",
+              },
+              {
+                "bg-yellow-400": category === "fragrances",
+              },
+              {
+                "bg-yellow-500":
+                  filters.category === "fragrances" &&
+                  category === "fragrances",
+              },
+              {
+                "bg-lime-400": category === "skincare",
+              },
+              {
+                "bg-lime-500":
+                  filters.category === "skincare" && category === "skincare",
+              },
+              {
+                "bg-emerald-400": category === "groceries",
+              },
+              {
+                "bg-emerald-500":
+                  filters.category === "groceries" && category === "groceries",
+              },
+
+              {
+                "bg-fuchsia-400": category === "home-decoration",
+              },
+              {
+                "bg-fuchsia-500":
+                  filters.category === "home-decoration" &&
+                  category === "home-decoration",
               }
             )}
             onClick={() => handleClickCategory(category)}
           >
-            <Smartphone className="w-5 h-5" />
-            <p>{category}</p>
+            {category === "smartphones" ? (
+              <Smartphone className="w-5 h-5 sm:w-6 sm:h-6" />
+            ) : (
+              ""
+            )}
+            {category === "laptops" ? (
+              <Laptop className="w-5 h-5 sm:w-6 sm:h-6" />
+            ) : (
+              ""
+            )}
+            {category === "fragrances" ? (
+              <Frangance className="w-5 h-5 sm:w-6 sm:h-6" />
+            ) : (
+              ""
+            )}
+            {category === "skincare" ? (
+              <Skincare className="w-5 h-5 sm:w-6 sm:h-6" />
+            ) : (
+              ""
+            )}
+            {category === "groceries" ? (
+              <Groceries className="w-5 h-5 sm:w-6 sm:h-6" />
+            ) : (
+              ""
+            )}
+            {category === "home-decoration" ? (
+              <Homedeco className="w-5 h-5 sm:w-6 sm:h-6" />
+            ) : (
+              ""
+            )}
+
+            <p>{category.charAt(0).toUpperCase() + category.slice(1)}</p>
           </a>
         ))}
     </section>

@@ -58,8 +58,8 @@ export default function Page({ params }) {
   //console.log(imageLoading);
   return (
     <>
-      <section className="flex-1 grid max-w-xs sm:max-w-4xl max-h-screen mx-auto grid-rows-[1fr,min-content,min-content,0.25fr]">
-        <section className="grid items-center grid-cols-3 grid-rows-3 gap-2 justify-items-center ">
+      <section className="sm:gap-2 sm:max-h-[38rem] sm:my-auto flex-1 grid max-w-xs sm:max-w-4xl max-h-screen mx-auto grid-rows-[1fr,min-content,min-content,0.25fr] sm:grid-cols-3 auto sm:grid-rows-3">
+        <section className="grid items-center grid-cols-3 grid-rows-3 gap-2 sm:col-span-2 sm:row-span-4 justify-items-center">
           {!product.thumbnail && (
             <section className="col-span-2 row-span-3 w-52 h-52 rounded-xl bg-slate-700 animate-pulse"></section>
           )}
@@ -69,7 +69,7 @@ export default function Page({ params }) {
               .map(() => (
                 <section
                   key={crypto.randomUUID()}
-                  className="w-24 h-24 rounded-3xl bg-slate-700 animate-pulse"
+                  className="w-24 h-24 rounded-3xl bg-slate-700 animate-pulse sm:h-40 sm:w-40"
                 ></section>
               ))}
           {product.thumbnail && (
@@ -95,7 +95,7 @@ export default function Page({ params }) {
                   width={500}
                   key={crypto.randomUUID()}
                   className={`${imageLoading.images[index] ? "invisible" : ""}
-                  object-cover w-24 h-24 rounded-3xl active:scale-95`}
+                  object-cover w-24 h-24 rounded-3xl active:scale-95 sm:h-40 sm:w-40`}
                   src={image}
                   onClick={() => imageHandler(image)}
                   onLoad={() => handleImageLoaded(index)}
@@ -104,18 +104,20 @@ export default function Page({ params }) {
             ))}
         </section>
         {!product.title && (
-          <section className="h-5 mt-2 text-xl font-bold text-center rounded bg-slate-700 animate-pulse"></section>
+          <section className="h-5 mt-2 text-xl font-bold text-center rounded sm:self-center bg-slate-700 animate-pulse"></section>
         )}
         {!product.description && (
-          <section className="h-10 mt-2 text-xl font-bold text-center rounded bg-slate-700 animate-pulse"></section>
+          <section className="h-10 mt-2 text-xl font-bold text-center rounded sm:self-center bg-slate-700 animate-pulse"></section>
         )}
         {product.title && (
-          <h2 className="mt-2 text-xl font-bold text-center">
+          <h2 className="mt-2 text-xl font-bold text-center sm:self-center sm:text-4xl">
             {product.title}
           </h2>
         )}
         {product.description && (
-          <p className="mt-2 text-sm">{product.description}</p>
+          <p className="mt-2 text-sm sm:self-center sm:text-base">
+            {product.description}
+          </p>
         )}
 
         <button className="self-center p-2 px-8 mx-auto font-semibold bg-red-400 rounded shadow-md cursor-pointer active:bg-red-500 active:scale-95 h-fit bottom-2 w-fit">
@@ -146,7 +148,7 @@ export default function Page({ params }) {
             height={500}
             width={500}
             src={showImage.img}
-            className="object-cover rounded w-60 h-60 sm:h-72 sm:w-72"
+            className="object-cover rounded w-60 h-60 sm:h-96 sm:w-96"
           />
         </section>
       </aside>

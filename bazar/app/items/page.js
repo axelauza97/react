@@ -66,21 +66,21 @@ export default function Page() {
         )}
         {!loading && products.length === 0 && (
           <h2 className="font-bold text-center">
-            No hay resultados para su búsqueda
+            No hay resultados para su búsqueda, pruebe buscando por letras
           </h2>
         )}
         {!loading && <Categories categories={categories()} />}
 
         <section>
           {!loading && (
-            <ul className="grid max-w-xl gap-4 m-4 mx-auto sm:grid-cols-2 sm:max-w-4xl">
+            <ul className="grid max-w-xl gap-4 m-4 mx-auto sm:grid-cols-2 sm:max-w-4xl justify-items-stretch">
               {filterProducts().map((product) => (
                 <Link
                   href={{
                     pathname: `/items/${product.id}`,
                   }}
                   key={product.id}
-                  className="bg-slate-100 shadow-md active:scale-95 rounded-lg mx-4 grid border border-neutral-500 grid-cols-2 gap-2 grid-rows-[min-content,min-content,min-content] p-2 auto-rows-min cursor-pointer"
+                  className="bg-slate-100 shadow-md active:scale-95 rounded-lg mx-4 grid border border-neutral-500 grid-cols-2 gap-2 grid-rows-[min-content,min-content,min-content] p-2 auto-rows-min cursor-pointer h-full place-content-center"
                 >
                   <img
                     src={product.thumbnail}
