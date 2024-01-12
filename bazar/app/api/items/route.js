@@ -1,9 +1,13 @@
-import responseMock from "@/mocks/products.json";
+//import responseMock from "@/mocks/products.json";
 import { NextResponse } from "next/server";
 
 export async function GET(req) {
   try {
     const search = req.nextUrl.searchParams.get("search"); // Accessing the 'search' query parameter
+    const responseMock = await fetch("https://dummyjson.com/products").then(
+      (res) => res.json()
+    );
+    console.log(responseMock);
     const result = await new Promise((resolve) => {
       let filterList = responseMock.products.filter(
         (product) =>
