@@ -1,8 +1,9 @@
 "use client";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useContext, useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import clsx from "clsx";
 import Image from "next/image";
+import { CartContext } from "@/context/cart";
 
 Page.propTypes = {
   params: PropTypes.object,
@@ -10,6 +11,8 @@ Page.propTypes = {
 
 export default function Page({ params }) {
   const [product, setProduct] = useState({});
+  const { addCart, checkProduct } = useContext(CartContext);
+
   const [imageLoading, setImageLoading] = useState({
     thumbnail: true,
     images: [true, true, true],
@@ -21,7 +24,6 @@ export default function Page({ params }) {
   });
 
   const handleThumbnailLoaded = useCallback(() => {
-    console.log("mirame");
     setImageLoading((prevState) => ({
       ...prevState,
       thumbnail: false,
@@ -58,7 +60,7 @@ export default function Page({ params }) {
   //console.log(imageLoading);
   return (
     <>
-      <section className="sm:gap-2 sm:max-h-[38rem] sm:my-auto flex-1 grid max-w-xs sm:max-w-4xl max-h-screen mx-auto grid-rows-[1fr,min-content,min-content,0.25fr] sm:grid-cols-3 auto sm:grid-rows-3">
+      <section className="gap-2 sm:max-h-[38rem] sm:my-auto flex-1 grid max-w-xs sm:max-w-4xl max-h-screen mx-auto grid-rows-[1fr,min-content,min-content,0.25fr] sm:grid-cols-3 auto sm:grid-rows-3">
         <section className="grid items-center grid-cols-3 grid-rows-3 gap-2 sm:col-span-2 sm:row-span-4 justify-items-center">
           {!product.thumbnail && (
             <section className="col-span-2 row-span-3 w-52 h-52 rounded-xl bg-slate-700 animate-pulse"></section>
@@ -88,19 +90,17 @@ export default function Page({ params }) {
 
           {product.images &&
             product.images.slice(0, 3).map((image, index) => (
-              <>
-                <Image
-                  alt="Image product"
-                  height={500}
-                  width={500}
-                  key={crypto.randomUUID()}
-                  className={`${imageLoading.images[index] ? "invisible" : ""}
+              <Image
+                alt="Image product"
+                height={500}
+                width={500}
+                key={crypto.randomUUID()}
+                className={`${imageLoading.images[index] ? "invisible" : ""}
                   object-cover w-24 h-24 rounded-3xl active:scale-95 sm:h-40 sm:w-40`}
-                  src={image}
-                  onClick={() => imageHandler(image)}
-                  onLoad={() => handleImageLoaded(index)}
-                />
-              </>
+                src={image}
+                onClick={() => imageHandler(image)}
+                onLoad={() => handleImageLoaded(index)}
+              />
             ))}
         </section>
         {!product.title && (
@@ -120,8 +120,22 @@ export default function Page({ params }) {
           </p>
         )}
 
-        <button className="self-center p-2 px-8 mx-auto font-semibold bg-red-400 rounded shadow-md cursor-pointer active:bg-red-500 active:scale-95 h-fit bottom-2 w-fit">
-          Comprar
+        <button
+          onClick={() => {
+            addCart(product);
+          }}
+          className={clsx(
+            {
+              "p-2 px-8 mx-auto font-semibold bg-green-400 rounded shadow-md cursor-pointer self-top active:bg-green-500 active:scale-95 h-fit bottom-2 w-fit":
+                checkProduct(product),
+            },
+            {
+              "p-2 px-8 mx-auto font-semibold bg-red-400 rounded shadow-md cursor-pointer self-top active:bg-red-500 active:scale-95 h-fit bottom-2 w-fit":
+                !checkProduct(product),
+            }
+          )}
+        >
+          {checkProduct(product) ? "On Cart" : "Buy"}
         </button>
       </section>
       <aside
@@ -135,6 +149,7 @@ export default function Page({ params }) {
               showImage.show,
           }
         )}
+        onClick={() => setShowImage({ show: false, img: "" })}
       >
         <section className="relative grid px-6 rounded animate-show">
           <button
@@ -143,13 +158,18 @@ export default function Page({ params }) {
           >
             x
           </button>
-          <Image
-            alt="Image product"
-            height={500}
-            width={500}
-            src={showImage.img}
-            className="object-cover rounded w-60 h-60 sm:h-96 sm:w-96"
-          />
+          {showImage.img && (
+            <Image
+              alt="Image product"
+              height={500}
+              width={500}
+              src={showImage.img}
+              className="object-cover rounded w-60 h-60 sm:h-96 sm:w-96 sm:max-h-[80dvh] z-10"
+              onClick={(e) => {
+                e.stopPropagation();
+              }}
+            />
+          )}
         </section>
       </aside>
     </>

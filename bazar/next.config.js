@@ -3,5 +3,6 @@ const nextConfig = {
   images: {
     domains: ["i.dummyjson.com"], // Add the domain where your images are hosted
   },
+  reactStrictMode: false,
 };
 module.exports = nextConfig;

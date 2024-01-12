@@ -15,7 +15,7 @@ export async function GET(req) {
       resolve({ ...responseMock, products: filterList });
       /*setTimeout(() => {
         console.log("Delayed for 1 second.");
-        resolve(responseMock);
+        resolve({ ...responseMock, products: filterList });
       }, 7000);*/
     });
     return NextResponse.json(result, {
