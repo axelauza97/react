@@ -7,7 +7,7 @@ export async function GET(req) {
     const responseMock = await fetch("https://dummyjson.com/products").then(
       (res) => res.json()
     );
-    console.log(responseMock);
+    //console.log(responseMock);
     const result = await new Promise((resolve) => {
       let filterList = responseMock.products.filter(
         (product) =>

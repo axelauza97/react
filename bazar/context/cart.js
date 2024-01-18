@@ -1,3 +1,4 @@
+"use client";
 import { createContext, useReducer } from "react";
 import { reducer } from "../reducers/cart";
 import PropTypes from "prop-types";

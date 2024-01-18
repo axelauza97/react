@@ -1,6 +1,6 @@
 "use client";
 import { Smartphone } from "@/images/smartphone";
-import { useContext } from "react";
+import { useCallback, useContext } from "react";
 import clsx from "clsx";
 import { FiltersContext } from "@/context/filters";
 import PropTypes from "prop-types";
@@ -10,7 +10,7 @@ import { Skincare } from "@/images/skincare";
 import { Groceries } from "@/images/groceries";
 import { Homedeco } from "@/images/homeDe";
 
-export const Categories = ({ categories }) => {
+export const Categories = ({ products }) => {
   const { filters, setFilters } = useContext(FiltersContext);
 
   const handleClickCategory = (category) => {
@@ -20,10 +20,18 @@ export const Categories = ({ categories }) => {
       setFilters({ category: category });
     }
   };
+  const categories = useCallback(() => {
+    let listCategories = new Set();
+    products.forEach((item) => {
+      listCategories.add(item.category);
+    });
+    return [...listCategories];
+  }, [products]);
+
   return (
     <section className="flex flex-wrap justify-around max-w-xl gap-2 m-4 mx-auto">
-      {categories &&
-        categories.map((category) => (
+      {categories() &&
+        categories().map((category) => (
           <a
             key={category}
             className={clsx(
@@ -115,5 +123,5 @@ export const Categories = ({ categories }) => {
   );
 };
 Categories.propTypes = {
-  categories: PropTypes.arrayOf(PropTypes.string),
+  products: PropTypes.arrayOf(Object),
 };

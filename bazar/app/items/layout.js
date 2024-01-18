@@ -1,13 +1,12 @@
-"use client";
-import { CartFloat } from "@/components/CartFloat";
-import { SearchBar } from "@/components/SearchBar";
-import { Modal } from "@/components/UI/Modal";
 import { CartProvider } from "@/context/cart";
 import { FiltersProvider } from "@/context/filters";
 import { ModalProvider } from "@/context/modal";
 import { ProductsProvider } from "@/context/products";
 import { SearchLoadingProvider } from "@/context/searchLoading";
 import PropTypes from "prop-types";
+import { SearchBar } from "../components/SearchBar";
+import { CartFloat } from "../components/CartFloat";
+import { Modal } from "../components/UI/Modal";
 
 Layout.propTypes = {
   children: PropTypes.node.isRequired,

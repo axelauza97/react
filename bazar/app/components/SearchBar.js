@@ -1,3 +1,4 @@
+"use client";
 import { Car } from "@/images/car";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useCallback, useEffect, useState } from "react";
@@ -37,7 +38,7 @@ export const SearchBar = () => {
     fetchProducts(event.target.value);
   };
   return (
-    <header className="sticky top-0 left-0 right-0 backdrop-blur z-10">
+    <header className="sticky top-0 left-0 right-0 z-10 backdrop-blur">
       <form
         onSubmit={handleSubmit}
         className="flex flex-wrap max-w-xs gap-4 py-2 m-4 mx-auto sm:max-w-md"
@@ -53,7 +54,7 @@ export const SearchBar = () => {
           }}
         />
         <input
-          className="flex-1 px-2 py-2 rounded shadow-lg"
+          className="flex-1 px-2 py-2 rounded shadow-lg w-full"
           type="text"
           placeholder="Laptops, smartphones..."
           name="search"

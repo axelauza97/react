@@ -60,7 +60,7 @@ export default function Page({ params }) {
   //console.log(imageLoading);
   return (
     <>
-      <section className="gap-2 sm:max-h-[38rem] sm:my-auto flex-1 grid max-w-xs sm:max-w-4xl max-h-screen mx-auto grid-rows-[1fr,min-content,min-content,0.25fr] sm:grid-cols-3 auto sm:grid-rows-3">
+      <section className="gap-4 p-2 sm:max-h-[38rem] sm:my-auto flex-1 grid max-w-xs sm:max-w-4xl max-h-screen mx-auto grid-rows-[1fr,min-content,min-content,0.25fr] sm:grid-cols-3 auto sm:grid-rows-3">
         <section className="grid items-center grid-cols-3 grid-rows-3 gap-2 sm:col-span-2 sm:row-span-4 justify-items-center">
           {!product.thumbnail && (
             <section className="col-span-2 row-span-3 w-52 h-52 rounded-xl bg-slate-700 animate-pulse"></section>
@@ -104,10 +104,10 @@ export default function Page({ params }) {
             ))}
         </section>
         {!product.title && (
-          <section className="h-5 mt-2 text-xl font-bold text-center rounded sm:self-center bg-slate-700 animate-pulse"></section>
+          <section className="h-10 text-xl font-bold text-center rounded sm:self-center bg-slate-700 animate-pulse"></section>
         )}
         {!product.description && (
-          <section className="h-10 mt-2 text-xl font-bold text-center rounded sm:self-center bg-slate-700 animate-pulse"></section>
+          <section className="h-20 text-xl font-bold text-center rounded sm:self-center bg-slate-700 animate-pulse"></section>
         )}
         {product.title && (
           <h2 className="mt-2 text-xl font-bold text-center sm:self-center sm:text-4xl">
