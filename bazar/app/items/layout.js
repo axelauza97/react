@@ -17,7 +17,7 @@ export default function Layout({ children }) {
   //console.log(params);
 
   return (
-    <section className="flex flex-col min-h-[calc(100dvh)]">
+    <section className="flex flex-col min-h-[calc(95dvh)] sm:min-h-[calc(100dvh)]">
       <CartProvider>
         <ModalProvider>
           <FiltersProvider>

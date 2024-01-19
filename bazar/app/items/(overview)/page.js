@@ -4,9 +4,9 @@ import { hostUrl } from "../../env/env";
 import { Categories } from "../../components/Categories";
 
 export const fetchSearch = async ({ value }) => {
-  return fetch(`${hostUrl}/api/items?search=${value}`).then((res) =>
-    res.json()
-  );
+  return fetch(`${hostUrl}/api/items?search=${value}`, {
+    next: { revalidate: 3600 },
+  }).then((res) => res.json());
 };
 export default async function Page({ searchParams }) {
   const products = await fetchSearch({ value: searchParams.search });
