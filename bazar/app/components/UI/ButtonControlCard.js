@@ -30,6 +30,7 @@ export const ButtonControlCard = ({ product }) => {
             addCart(product);
           }
         }}
+        aria-label={product.title}
       >
         {checkProduct(product) ? (
           <AddCart className="h-8 " />

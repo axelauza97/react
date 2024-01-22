@@ -17,7 +17,7 @@ export const ProductsList = ({ children, products }) => {
   }, [search]);
   return (
     <section>
-      <ul className="grid max-w-xl gap-4 m-4 mx-auto sm:grid-cols-2 sm:max-w-4xl justify-items-stretch items-stretch">
+      <ul className="grid items-stretch max-w-xl gap-4 m-4 mx-auto sm:grid-cols-2 sm:max-w-4xl justify-items-stretch">
         {filters.category != "all" &&
           filterProducts().map((product) => (
             <ProductCard key={crypto.randomUUID()} product={product} />
