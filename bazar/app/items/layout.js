@@ -1,5 +1,4 @@
 import { CartProvider } from "@/context/cart";
-import { FiltersProvider } from "@/context/filters";
 import { ModalProvider } from "@/context/modal";
 import { ProductsProvider } from "@/context/products";
 import { SearchLoadingProvider } from "@/context/searchLoading";
@@ -20,16 +19,14 @@ export default function Layout({ children }) {
     <section className="flex flex-col min-h-[calc(95dvh)] sm:min-h-[calc(100dvh)]">
       <CartProvider>
         <ModalProvider>
-          <FiltersProvider>
-            <SearchLoadingProvider>
-              <ProductsProvider>
-                <SearchBar />
-                {children}
-                <CartFloat />
-                <Modal />
-              </ProductsProvider>
-            </SearchLoadingProvider>
-          </FiltersProvider>
+          <SearchLoadingProvider>
+            <ProductsProvider>
+              <SearchBar />
+              {children}
+              <CartFloat />
+              <Modal />
+            </ProductsProvider>
+          </SearchLoadingProvider>
         </ModalProvider>
       </CartProvider>
     </section>

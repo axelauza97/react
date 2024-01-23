@@ -1,25 +1,22 @@
 "use client";
 import { Smartphone } from "@/images/smartphone";
-import { useCallback, useContext } from "react";
+import { useCallback } from "react";
 import clsx from "clsx";
-import { FiltersContext } from "@/context/filters";
 import PropTypes from "prop-types";
 import { Laptop } from "@/images/laptop";
 import { Frangance } from "@/images/fragance";
 import { Skincare } from "@/images/skincare";
 import { Groceries } from "@/images/groceries";
 import { Homedeco } from "@/images/homeDe";
+import { useSearchParams } from "next/navigation";
+import Link from "next/link";
 
 export const Categories = ({ products }) => {
-  const { filters, setFilters } = useContext(FiltersContext);
+  const searchParams = useSearchParams();
 
-  const handleClickCategory = (category) => {
-    if (category === filters.category) {
-      setFilters({ category: "all" });
-    } else {
-      setFilters({ category: category });
-    }
-  };
+  const searchParam = searchParams.get("search");
+  const categoryParam = searchParams.get("category");
+
   const categories = useCallback(() => {
     let listCategories = new Set();
     products.forEach((item) => {
@@ -32,7 +29,12 @@ export const Categories = ({ products }) => {
     <section className="flex flex-wrap justify-around max-w-xl gap-2 m-4 mx-auto">
       {categories() &&
         categories().map((category) => (
-          <a
+          <Link
+            href={
+              categoryParam == category
+                ? `?search=${searchParam}`
+                : `?search=${searchParam}&category=${category}`
+            }
             key={category}
             className={clsx(
               "active:scale-95 items-center text-xs sm:text-base flex gap-3 p-1 sm:p-2 rounded cursor-pointer shadow-md",
@@ -41,37 +43,35 @@ export const Categories = ({ products }) => {
               },
               {
                 "bg-red-500":
-                  filters.category === "smartphones" &&
-                  category === "smartphones",
+                  categoryParam === "smartphones" && category === "smartphones",
               },
               {
                 "bg-blue-400": category === "laptops",
               },
               {
                 "bg-blue-500":
-                  filters.category === "laptops" && category === "laptops",
+                  categoryParam === "laptops" && category === "laptops",
               },
               {
                 "bg-yellow-400": category === "fragrances",
               },
               {
                 "bg-yellow-500":
-                  filters.category === "fragrances" &&
-                  category === "fragrances",
+                  categoryParam === "fragrances" && category === "fragrances",
               },
               {
                 "bg-lime-400": category === "skincare",
               },
               {
                 "bg-lime-500":
-                  filters.category === "skincare" && category === "skincare",
+                  categoryParam === "skincare" && category === "skincare",
               },
               {
                 "bg-emerald-400": category === "groceries",
               },
               {
                 "bg-emerald-500":
-                  filters.category === "groceries" && category === "groceries",
+                  categoryParam === "groceries" && category === "groceries",
               },
 
               {
@@ -79,11 +79,10 @@ export const Categories = ({ products }) => {
               },
               {
                 "bg-fuchsia-500":
-                  filters.category === "home-decoration" &&
+                  categoryParam === "home-decoration" &&
                   category === "home-decoration",
               }
             )}
-            onClick={() => handleClickCategory(category)}
           >
             {category === "smartphones" ? (
               <Smartphone className="w-5 h-5 sm:w-6 sm:h-6" />
@@ -115,9 +114,8 @@ export const Categories = ({ products }) => {
             ) : (
               ""
             )}
-
             <p>{category.charAt(0).toUpperCase() + category.slice(1)}</p>
-          </a>
+          </Link>
         ))}
     </section>
   );

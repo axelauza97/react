@@ -1,8 +1,8 @@
 "use client";
-import { createContext, useCallback, useContext, useReducer } from "react";
+import { createContext, useCallback, useReducer } from "react";
 import PropTypes from "prop-types";
 import { reducer } from "@/reducers/product";
-import { FiltersContext } from "./filters";
+import { useSearchParams } from "next/navigation";
 
 export const productActions = {
   GET_FILTER_PRODUCTS: "GET_FILTER_PRODUCTS",
@@ -14,9 +14,9 @@ export const productActions = {
 export const ProductsContext = createContext();
 
 export function ProductsProvider({ children }) {
-  const { filters } = useContext(FiltersContext);
-
   const [products, dispatch] = useReducer(reducer, []);
+  const searchParams = useSearchParams();
+  const categoryParam = searchParams.get("category");
 
   const setFetchProducts = (products) => {
     dispatch({
@@ -27,13 +27,13 @@ export function ProductsProvider({ children }) {
 
   const filterProducts = useCallback(() => {
     return products.filter((product) => {
-      if (filters.category === "all") {
+      if (categoryParam === "all") {
         return true;
       } else {
-        return filters.category === product.category;
+        return categoryParam === product.category;
       }
     });
-  }, [products, filters]);
+  }, [products, categoryParam]);
 
   return (
     <ProductsContext.Provider
