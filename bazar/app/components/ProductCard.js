@@ -4,14 +4,19 @@ import { ButtonControlCard } from "./UI/ButtonControlCard";
 import { MotionLi } from "./UI/MotionLi";
 import Image from "next/image";
 
-export const ProductCard = ({ product }) => {
+export const ProductCard = ({ product, index }) => {
   //console.log(product);
 
   return (
     <MotionLi
-      initial={{ opacity: 0, scale: 0.5 }}
-      animate={{ opacity: 1, scale: 1 }}
-      transition={{ duration: 0.5 }}
+      initial={{ opacity: 0, scale: 0.85, filter: "blur(0.25rem)" }}
+      //animate={{ opacity: 1, scale: 1, filter: "blur(0)" }}
+      transition={{
+        duration: 0.25,
+        delay: 0.1 * index > 0.4 ? 0.1 : 0.1 * index,
+      }}
+      whileInView={{ opacity: 1, scale: 1, filter: "blur(0)" }}
+      viewport={{ once: true, amount: 0.8 }}
     >
       <Link
         href={{
@@ -39,4 +44,5 @@ export const ProductCard = ({ product }) => {
 };
 ProductCard.propTypes = {
   product: PropTypes.object.isRequired,
+  index: PropTypes.number.isRequired,
 };

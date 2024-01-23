@@ -153,10 +153,10 @@ export default function Page({ params }) {
       >
         <section className="relative grid px-6 rounded animate-show">
           <button
-            className="absolute top-[-1.5rem] right-[-.5rem] font-bold px-2 text-gray-800 bg-red-400 rounded active:bg-red-500 active:scale-95"
+            className="absolute top-[-1.5rem] right-[-.5rem] font-bold p-2 text-gray-800 bg-red-400 rounded active:bg-red-500 active:scale-95"
             onClick={() => setShowImage({ show: false, img: "" })}
           >
-            x
+            X
           </button>
           {showImage.img && (
             <Image

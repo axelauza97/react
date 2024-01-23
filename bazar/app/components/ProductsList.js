@@ -19,8 +19,12 @@ export const ProductsList = ({ children, products }) => {
     <section>
       <ul className="grid items-stretch max-w-xl gap-4 m-4 mx-auto sm:grid-cols-2 sm:max-w-4xl justify-items-stretch">
         {categoryParam != "all" &&
-          filterProducts().map((product) => (
-            <ProductCard key={crypto.randomUUID()} product={product} />
+          filterProducts().map((product, i) => (
+            <ProductCard
+              key={crypto.randomUUID()}
+              product={product}
+              index={i}
+            />
           ))}
         {(categoryParam === "all" || categoryParam == null) && children}
       </ul>

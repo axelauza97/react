@@ -8,11 +8,11 @@ import { Frangance } from "@/images/fragance";
 import { Skincare } from "@/images/skincare";
 import { Groceries } from "@/images/groceries";
 import { Homedeco } from "@/images/homeDe";
-import { useSearchParams } from "next/navigation";
-import Link from "next/link";
+import { useRouter, useSearchParams } from "next/navigation";
 
 export const Categories = ({ products }) => {
   const searchParams = useSearchParams();
+  const router = useRouter();
 
   const searchParam = searchParams.get("search");
   const categoryParam = searchParams.get("category");
@@ -29,12 +29,14 @@ export const Categories = ({ products }) => {
     <section className="flex flex-wrap justify-around max-w-xl gap-2 m-4 mx-auto">
       {categories() &&
         categories().map((category) => (
-          <Link
-            href={
-              categoryParam == category
-                ? `?search=${searchParam}`
-                : `?search=${searchParam}&category=${category}`
-            }
+          <button
+            onClick={() => {
+              router.replace(
+                categoryParam == category
+                  ? `?search=${searchParam}`
+                  : `?search=${searchParam}&category=${category}`
+              );
+            }}
             key={category}
             className={clsx(
               "active:scale-95 items-center text-xs sm:text-base flex gap-3 p-1 sm:p-2 rounded cursor-pointer shadow-md",
@@ -115,7 +117,7 @@ export const Categories = ({ products }) => {
               ""
             )}
             <p>{category.charAt(0).toUpperCase() + category.slice(1)}</p>
-          </Link>
+          </button>
         ))}
     </section>
   );

@@ -28,8 +28,12 @@ export default async function Page({ searchParams }) {
         <Categories products={products.products} />
         <ProductsList products={products.products}>
           {products.products &&
-            products.products.map((productE) => (
-              <ProductCard key={crypto.randomUUID()} product={productE} />
+            products.products.map((productE, i) => (
+              <ProductCard
+                key={crypto.randomUUID()}
+                product={productE}
+                index={i}
+              />
             ))}
         </ProductsList>
       </main>
