@@ -26,7 +26,7 @@ export const Categories = ({ products }) => {
   }, [products]);
 
   return (
-    <section className="flex flex-wrap justify-around max-w-xl gap-2 m-4 mx-auto">
+    <section className="flex flex-wrap justify-around max-w-xl gap-2 m-4 mx-auto sm:max-w-4xl">
       {categories() &&
         categories().map((category) => (
           <button
@@ -39,40 +39,40 @@ export const Categories = ({ products }) => {
             }}
             key={category}
             className={clsx(
-              "active:scale-95 items-center text-xs sm:text-base flex gap-3 p-1 sm:p-2 rounded cursor-pointer shadow-md",
+              "active:scale-95 items-center text-xs  flex gap-3 p-1  rounded cursor-pointer shadow-md",
               {
                 "bg-red-400": category === "smartphones",
               },
               {
-                "bg-red-500":
+                "bg-red-600":
                   categoryParam === "smartphones" && category === "smartphones",
               },
               {
                 "bg-blue-400": category === "laptops",
               },
               {
-                "bg-blue-500":
+                "bg-blue-600":
                   categoryParam === "laptops" && category === "laptops",
               },
               {
                 "bg-yellow-400": category === "fragrances",
               },
               {
-                "bg-yellow-500":
+                "bg-yellow-600":
                   categoryParam === "fragrances" && category === "fragrances",
               },
               {
                 "bg-lime-400": category === "skincare",
               },
               {
-                "bg-lime-500":
+                "bg-lime-600":
                   categoryParam === "skincare" && category === "skincare",
               },
               {
                 "bg-emerald-400": category === "groceries",
               },
               {
-                "bg-emerald-500":
+                "bg-emerald-600":
                   categoryParam === "groceries" && category === "groceries",
               },
 
@@ -80,7 +80,7 @@ export const Categories = ({ products }) => {
                 "bg-fuchsia-400": category === "home-decoration",
               },
               {
-                "bg-fuchsia-500":
+                "bg-fuchsia-600":
                   categoryParam === "home-decoration" &&
                   category === "home-decoration",
               }
@@ -116,7 +116,9 @@ export const Categories = ({ products }) => {
             ) : (
               ""
             )}
-            <p>{category.charAt(0).toUpperCase() + category.slice(1)}</p>
+            <p className={`${category == categoryParam ? "font-bold" : ""}`}>
+              {category.charAt(0).toUpperCase() + category.slice(1)}
+            </p>
           </button>
         ))}
     </section>

@@ -4,7 +4,6 @@ import { ProductsProvider } from "@/context/products";
 import { SearchLoadingProvider } from "@/context/searchLoading";
 import PropTypes from "prop-types";
 import { SearchBar } from "../components/SearchBar";
-import { CartFloat } from "../components/CartFloat";
 import { Modal } from "../components/UI/Modal";
 
 Layout.propTypes = {
@@ -23,7 +22,6 @@ export default function Layout({ children }) {
             <ProductsProvider>
               <SearchBar />
               {children}
-              <CartFloat />
               <Modal />
             </ProductsProvider>
           </SearchLoadingProvider>

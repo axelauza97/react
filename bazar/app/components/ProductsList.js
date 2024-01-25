@@ -17,7 +17,7 @@ export const ProductsList = ({ children, products }) => {
   }, [search]);
   return (
     <section>
-      <ul className="grid items-stretch max-w-xl gap-4 m-4 mx-auto sm:grid-cols-2 sm:max-w-4xl justify-items-stretch">
+      <ul className="grid items-stretch max-w-xl grid-cols-2 gap-1 p-1 m-4 mx-auto sm:grid-cols-3 sm:gap-4 sm:max-w-4xl justify-items-stretch">
         {categoryParam != "all" &&
           filterProducts().map((product, i) => (
             <ProductCard

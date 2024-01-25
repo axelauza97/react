@@ -1,4 +1,4 @@
-import { Car } from "@/images/car";
+import { Car } from "@/images/Car";
 import { SearchForm } from "./components/SearchForm";
 
 export default function Home() {
