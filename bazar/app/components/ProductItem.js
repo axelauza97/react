@@ -60,6 +60,7 @@ export const ProductItem = ({ product }) => {
               alt="Image product"
               height={500}
               width={500}
+              priority={true}
               className={`${
                 imageLoading.thumbnail ? "invisible" : ""
               } object-cover col-span-2 row-span-3 w-52 h-52 rounded-xl active:scale-95 sm:h-72 sm:w-72`}
@@ -75,6 +76,7 @@ export const ProductItem = ({ product }) => {
                 alt="Image product"
                 height={500}
                 width={500}
+                priority={false}
                 key={crypto.randomUUID()}
                 className={`${imageLoading.images[index] ? "invisible" : ""}
                   object-cover w-24 h-24 rounded-3xl active:scale-95 sm:h-40 sm:w-40`}
@@ -88,7 +90,7 @@ export const ProductItem = ({ product }) => {
 
         {product.title && (
           <h2 className="mt-2 text-xl font-bold text-center sm:self-center sm:text-4xl">
-            {product.title}
+            {product.title.charAt(0).toUpperCase() + product.title.slice(1)}
           </h2>
         )}
         {product.description && (

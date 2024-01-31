@@ -5,12 +5,15 @@ import debounce from "just-debounce-it";
 import { Cart } from "@/images/cart";
 import { ModalContext } from "@/context/modal";
 import { Car } from "@/images/Car";
+import { CartContext } from "@/context/cart";
 
 export const SearchBar = () => {
   const searchParams = useSearchParams();
 
   const search = searchParams.get("search");
   const { setShowModal } = useContext(ModalContext);
+  const { cart } = useContext(CartContext);
+
   //const [error, setError] = useState("");
   const [searchValue, setSearchValue] = useState("");
   const router = useRouter();
@@ -66,13 +69,16 @@ export const SearchBar = () => {
           onChange={(e) => handleChange(e)}
         />
         <button className="hidden p-2 px-8 mx-auto font-semibold bg-red-400 rounded shadow-md cursor-pointer sm:block active:bg-red-500 active:scale-95 h-fit bottom-2 w-fit">
-          Buscar
+          Search
         </button>
         <div
           onClick={() => setShowModal((prev) => !prev)}
-          className="w-8 ml-auto mr-0 drop-shadow hover:cursor-pointer active:scale-95"
+          className="relative ml-auto mr-0 w-9 drop-shadow hover:cursor-pointer active:scale-95"
         >
-          <Cart className="h-full drop-shadow p-0.5 fill-slate-100" />
+          <Cart className="h-full w-9 drop-shadow fill-slate-100" />
+          {cart && cart.length > 0 && (
+            <span className="absolute z-50 w-2 h-2 bg-blue-400 rounded-full bottom-1 right-1 animate-pulse" />
+          )}
         </div>
       </form>
     </header>

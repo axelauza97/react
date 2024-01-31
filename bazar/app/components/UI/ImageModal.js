@@ -17,12 +17,12 @@ export const ImageModal = ({ showImage, setShowImage }) => {
       )}
       onClick={() => setShowImage({ show: false, img: "" })}
     >
-      <section className="relative grid px-6 rounded animate-show">
+      <section className="grid px-6 rounded animate-show">
         <button
-          className="absolute top-[-1.5rem] right-[-.5rem] font-bold p-2 text-gray-800 bg-red-400 rounded active:bg-red-500 shadow-lg active:scale-95"
+          className="absolute top-[-.5rem] right-[-.5rem] font-bold text-gray-800 bg-red-400 rounded active:bg-red-500 shadow-lg active:scale-95"
           onClick={() => setShowImage({ show: false, img: "" })}
         >
-          X
+          <div className="w-5 h-5 close"></div>
         </button>
         {showImage.img && (
           <Image

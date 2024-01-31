@@ -1,38 +1,34 @@
-https://github.com/midudev/pruebas-tecnicas/tree/main/pruebas/02-bazar-universal
+# Bazar Online
 
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+- This project is focused to show a Website SPA with responsive design in NextJS framework.
 
-## Getting Started
+- Here you can search items and manage cart shopping.
 
-First, run the development server:
+- This is a project where I developed a SSR with skeleton loaders for enhancing user experience.
+
+## For running locally
+
+Run in bash
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Screenshots
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+### Mobile
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+![iPhone-XS-X-375x812](https://github.com/axelauza97/react/assets/35442831/254d605d-3728-4fa3-92e6-8e2f70a2022e)
 
-## Learn More
+![iPhone-XS-X-375x812](https://github.com/axelauza97/react/assets/35442831/6e9c56ba-9272-4be5-8ca4-1af0878e338d)
 
-To learn more about Next.js, take a look at the following resources:
+![iPhone-XS-X-375x812](https://github.com/axelauza97/react/assets/35442831/3b642c13-370d-4830-bde4-8d9f7a7c9aa5)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Desktop
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+![Laptop-3-1280x950](https://github.com/axelauza97/react/assets/35442831/7a082391-9b1f-4cb9-937b-3b169958f0d6)
 
-## Deploy on Vercel
+#### Develop by Axel Auza
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+#### 🚀 Thanks for being here and feel free to contribute or give feedback

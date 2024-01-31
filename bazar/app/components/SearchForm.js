@@ -25,7 +25,7 @@ export const SearchForm = () => {
       />
       {error != "" && <p className="text-red-700 ">{error}</p>}
       <button className="self-end p-2 px-8 mx-auto font-semibold bg-red-400 rounded shadow-md cursor-pointer active:bg-red-500 active:scale-95 h-fit bottom-2 w-fit">
-        Buscar
+        Search
       </button>
       {/*<Link href="/items"> dd</Link>*/}
     </form>

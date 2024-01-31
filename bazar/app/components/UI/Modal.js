@@ -19,10 +19,10 @@ export const Modal = () => {
         <div className="fixed top-0 left-0 right-0 z-[999] min-h-[100dvh] grid backdrop-blur-md place-content-center">
           <div className="max-w-md relative grid gap-4 max-h-[80dvh] md:max-h-[70dvh] bg-slate-100 rounded-xl p-4 shadow-2xl">
             <button
-              className="absolute p-2 font-bold bg-red-400 rounded shadow-md cursor-pointer right-2 top-2 active:bg-red-500 active:scale-95"
+              className="absolute font-bold bg-red-400 rounded shadow-md cursor-pointer right-2 top-2 active:bg-red-500 active:scale-95"
               onClick={() => setShowModal((prev) => !prev)}
             >
-              X
+              <div className="w-5 h-5 close"></div>
             </button>
             <h3 className="mx-auto text-2xl font-bold">Your cart Items!</h3>
             <section className="overflow-x-hidden overflow-y-auto">

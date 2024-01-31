@@ -1,4 +1,4 @@
-import { cartActions, initialState } from "../context/cart";
+import { cartActions } from "../context/cart";
 
 export const reducer = (state, action) => {
   const { type, payload } = action;
@@ -33,10 +33,13 @@ export const reducer = (state, action) => {
       return state;
     }
     case cartActions.CLEAR_CART: {
-      return initialState;
+      return [];
     }
     case cartActions.REMOVE_PRODUCT_CART: {
       return state.filter((item) => item.id != payload.id);
+    }
+    case cartActions.INITIALIZE_STATE: {
+      return [...payload];
     }
   }
   return state;

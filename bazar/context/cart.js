@@ -1,5 +1,5 @@
 "use client";
-import { createContext, useReducer } from "react";
+import { createContext, useEffect, useReducer } from "react";
 import { reducer } from "../reducers/cart";
 import PropTypes from "prop-types";
 
@@ -10,12 +10,24 @@ export const cartActions = {
   REMOVE_CART: "REMOVE_CART",
   CLEAR_CART: "CLEAR_CART",
   REMOVE_PRODUCT_CART: "REMOVE_PRODUCT_CART",
+  INITIALIZE_STATE: "INITIALIZE_STATE",
 };
 export const initialState = [];
 
 export function CartProvider({ children }) {
   const [state, dispatch] = useReducer(reducer, initialState);
-  //console.log(state);
+  useEffect(() => {
+    const savedData = localStorage.getItem("items");
+    if (savedData) {
+      dispatch({
+        type: cartActions.INITIALIZE_STATE,
+        payload: JSON.parse(savedData),
+      });
+    }
+  }, []);
+  useEffect(() => {
+    localStorage.setItem("items", JSON.stringify(state));
+  }, [state]);
   const addCart = (product) => {
     dispatch({
       type: cartActions.ADD_CART,
