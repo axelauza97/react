@@ -6,6 +6,10 @@
 
 - This is a project where I developed a SSR with skeleton loaders for enhancing user experience.
 
+## Website
+
+https://bazar-store-axel.vercel.app/
+
 ## For running locally
 
 Run in bash

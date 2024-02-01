@@ -24,7 +24,8 @@ export default async function Page({ searchParams }) {
         {products.products.length === 0 && (
           <>
             <h2 className="p-2 font-bold text-center">
-              There are no results for you search, try searching by or click:
+              There are no results for you search, try searching by letters or
+              click below:
             </h2>
 
             <section className="flex flex-wrap justify-center max-w-xl gap-10 m-4 mx-auto sm:max-w-4xl">
