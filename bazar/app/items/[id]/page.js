@@ -5,6 +5,9 @@ import { hostUrl } from "@/app/env/env";
 Page.propTypes = {
   params: PropTypes.object,
 };
+export const metadata = {
+  title: "Product Overview",
+};
 export const fetchSearchItem = async ({ value }) => {
   return fetch(`${hostUrl}/api/item/${value}`, {
     next: { revalidate: 3600 },

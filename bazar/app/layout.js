@@ -8,7 +8,9 @@ const montserrat = Montserrat({
 
 export const metadata = {
   title: "Bazar Store - Axel Auza",
-  description: "Created by Axel Auza",
+  description:
+    "Example Ecommerce Web Page written with Next.js and Tailwind.css by Axel Auza A",
+  keywords: "Axel Auza, Next.js, Tailwind, FrontEnd, FullStack",
 };
 import PropTypes from "prop-types";
 

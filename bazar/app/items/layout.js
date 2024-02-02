@@ -6,6 +6,16 @@ import PropTypes from "prop-types";
 import { SearchBar } from "../components/SearchBar";
 import { Modal } from "../components/UI/Modal";
 
+export const metadata = {
+  title: {
+    template: "%s - Axel Auza",
+    default: "Bazar Store - Axel Auza",
+  },
+  description:
+    "Example Ecommerce Web Page written with Next.js and Tailwind.css by Axel Auza A",
+  keywords: "Axel Auza, Next.js, Tailwind, FrontEnd, FullStack",
+};
+
 Layout.propTypes = {
   children: PropTypes.node.isRequired,
   params: PropTypes.object,

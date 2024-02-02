@@ -4,6 +4,10 @@ import { hostUrl } from "../../env/env";
 import { Categories } from "../../components/Categories";
 import Link from "next/link";
 
+export const metadata = {
+  title: "Search Results",
+};
+
 export const fetchSearch = async ({ value }) => {
   return fetch(`${hostUrl}/api/items?search=${value}`, {
     next: { revalidate: 3600 },
