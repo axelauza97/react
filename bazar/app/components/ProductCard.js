@@ -23,23 +23,23 @@ export const ProductCard = ({ product, index }) => {
           pathname: `/items/${product.id}`,
         }}
         key={product.id}
-        className="relative group bg-slate-100 shadow active:scale-95 rounded-lg    grid grid-cols-2 sm:gap-2 grid-rows-[min-content,min-content,min-content,min-content,min-content] p-2 auto-rows-min cursor-pointer h-full place-content-center"
+        className="relative group bg-slate-100 shadow active:scale-95 rounded-lg  grid grid-cols-2 sm:gap-2 grid-rows-[min-content,min-content,min-content,min-content,min-content] auto-rows-min cursor-pointer h-full place-content-center"
       >
         <Image
           src={product.thumbnail}
-          className="self-center object-cover col-span-2 row-span-2 w-36 h-36 sm:w-42 sm:h-42 rounded-xl justify-self-center group-hover:scale-95 group-hover:duration-150"
+          className="self-center object-cover col-span-2 row-span-2 w-full h-36 sm:w-42 sm:h-42  justify-self-center group-hover:scale-95 group-hover:duration-150 rounded-t-lg"
           alt={product.id}
           height={500}
           width={500}
           priority={index <= 3 ? true : false}
         />
-        <h3 className="max-w-xs pt-1 text-sm font-bold col-span-full">
+        <h3 className="pl-2 max-w-xs pt-1 text-sm font-bold col-span-full">
           {product.title.charAt(0).toUpperCase() + product.title.slice(1)}
         </h3>
-        <p className="row-start-4 overflow-hidden text-xs col-span-full">
+        <p className="pl-2 row-start-4 overflow-hidden text-xs col-span-full">
           {product.category.charAt(0).toUpperCase() + product.category.slice(1)}
         </p>
-        <p className="row-start-5 font-medium">${product.price}</p>
+        <p className="pl-2 row-start-5 font-medium">${product.price}</p>
         <ButtonControlCard product={product} />
       </Link>
     </MotionLi>
